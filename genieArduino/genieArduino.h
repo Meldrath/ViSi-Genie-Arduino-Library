@@ -5,6 +5,7 @@
 //      This is intended to be used with the Arduino platform.
 //
 //		Updated by
+//              Isaac Croas, January 2014, for the digix
 //		4D Systems Engineering, January 2014, www.4dsystems.com.au
 //		4D Systems Engineering, September 2013, www.4dsystems.com.au		
 //		Written by 
