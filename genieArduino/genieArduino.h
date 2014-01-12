@@ -14,21 +14,21 @@
 //
 //      Copyright (c) 2012-2013 4D Systems PTY Ltd, Sydney, Australia
 /*********************************************************************
- * This file is part of genieArduino:
- *    genieArduino is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU Lesser General Public License as
- *    published by the Free Software Foundation, either version 3 of the
- *    License, or (at your option) any later version.
- *
- *    genieArduino is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU Lesser General Public License for more details.
- *
- *    You should have received a copy of the GNU Lesser General Public
- *    License along with genieArduino.
- *    If not, see <http://www.gnu.org/licenses/>.
- *********************************************************************/
+* This file is part of genieArduino:
+*    genieArduino is free software: you can redistribute it and/or modify
+*    it under the terms of the GNU Lesser General Public License as
+*    published by the Free Software Foundation, either version 3 of the
+*    License, or (at your option) any later version.
+*
+*    genieArduino is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU Lesser General Public License for more details.
+*
+*    You should have received a copy of the GNU Lesser General Public
+*    License along with genieArduino.
+*    If not, see <http://www.gnu.org/licenses/>.
+*********************************************************************/
 
 #include <stdint.h>
 
@@ -106,7 +106,7 @@ struct genieFrameReportObj {
 	uint8_t		data_msb;
 	uint8_t		data_lsb;
 };
- 
+
 /////////////////////////////////////////////////////////////////////
 // The Genie frame definition
 //
@@ -134,28 +134,28 @@ struct genieEventQueueStruct {
 	uint8_t		n_events;
 };
 
-typedef void		(*geniePutCharFuncPtr)		(uint8_t c, uint32_t baud);
-typedef uint16_t	(*genieGetCharFuncPtr)		(void);
-typedef void		(*genieUserEventHandlerPtr) (void);
+typedef void(*geniePutCharFuncPtr)		(uint8_t c, uint32_t baud);
+typedef uint16_t(*genieGetCharFuncPtr)		(void);
+typedef void(*genieUserEventHandlerPtr) (void);
 
 /////////////////////////////////////////////////////////////////////
 // User API functions
 // These function prototypes are the user API to the library
 //
-extern void		genieSetup				(uint32_t baud);
-extern uint16_t genieBegin				(uint8_t port, uint32_t baud);
-extern bool		genieReadObject			(uint16_t object, uint16_t index);
-extern uint16_t	genieWriteObject		(uint16_t object, uint16_t index, uint16_t data);
-extern void		genieWriteContrast		(uint16_t value);
-extern uint16_t	genieWriteStr			(uint16_t index, char *string);
-extern uint16_t	genieWriteStrU			(uint16_t index, char *string);
-extern bool		genieEventIs			(genieFrame * e, uint8_t cmd, uint8_t object, uint8_t index);
-extern uint16_t genieGetEventData		(genieFrame * e); 
-extern uint16_t	genieDoEvents			(void);
-extern void		genieAttachEventHandler (genieUserEventHandlerPtr userHandler);
-extern bool		genieDequeueEvent		(genieFrame * buff);
+extern void		genieSetup(uint32_t baud);
+extern uint16_t genieBegin(uint8_t port, uint32_t baud);
+extern bool		genieReadObject(uint16_t object, uint16_t index);
+extern uint16_t	genieWriteObject(uint16_t object, uint16_t index, uint16_t data);
+extern void		genieWriteContrast(uint16_t value);
+extern uint16_t	genieWriteStr(uint16_t index, char *string);
+extern uint16_t	genieWriteStrU(uint16_t index, char *string);
+extern bool		genieEventIs(genieFrame * e, uint8_t cmd, uint8_t object, uint8_t index);
+extern uint16_t genieGetEventData(genieFrame * e);
+extern uint16_t	genieDoEvents(void);
+extern void		genieAttachEventHandler(genieUserEventHandlerPtr userHandler);
+extern bool		genieDequeueEvent(genieFrame * buff);
 
-extern void		pulse (int pin);
+extern void		pulse(int pin);
 
 #ifndef	TRUE
 #define	TRUE	(1==1)
@@ -213,10 +213,9 @@ extern void		pulse (int pin);
 #endif
 
 #if defined(__SAM3X8E__) // Due
-#define SERIAL
+#define SERIAL_0
 #define SERIAL_1
 #define SERIAL_2
-#define SERIAL_3
 #endif
 
 #if defined(__32MX320F128H__) // For Chipkit Uno32 (UNTESTED)
@@ -237,11 +236,12 @@ extern void		pulse (int pin);
 #endif
 
 typedef enum {
-  GENIE_NULL,
-  GENIE_SERIAL,
-  GENIE_SERIAL_1,
-  GENIE_SERIAL_2,
-  GENIE_SERIAL_3
+	GENIE_NULL,
+	GENIE_SERIAL,
+	GENIE_SERIAL_0,
+	GENIE_SERIAL_1,
+	GENIE_SERIAL_2,
+	GENIE_SERIAL_3
 } genie_port_types;
 
 #endif
